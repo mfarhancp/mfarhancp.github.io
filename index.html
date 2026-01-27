@@ -282,6 +282,154 @@
             font-size: 0.9em;
         }
         
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            position: relative;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            border-color: #3b82f6;
+        }
+        
+        .service-card.featured {
+            border: 2px solid #3b82f6;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #3b82f6;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .service-number {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1e3a8a;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            color: #1e3a8a;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .service-desc {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .service-price {
+            background: #f0fdf4;
+            color: #166534;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border-left: 4px solid #22c55e;
+        }
+        
+        .service-features {
+            margin: 25px 0;
+        }
+        
+        .service-features h4 {
+            color: #334155;
+            font-size: 1.05em;
+            margin-bottom: 12px;
+        }
+        
+        .service-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-features li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .service-ideal {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.95em;
+            color: #78350f;
+            line-height: 1.6;
+        }
+        
+        .service-ideal strong {
+            color: #92400e;
+        }
+        
+        .services-cta {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid #bae6fd;
+        }
+        
+        .services-cta h3 {
+            color: #1e3a8a;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .services-cta p {
+            color: #475569;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .services-cta strong {
+            color: #1e3a8a;
+        }
+        
         /* Certifications */
         .cert-grid {
             display: grid;
@@ -395,6 +543,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .results-grid {
                 grid-template-columns: 1fr;
             }
@@ -427,9 +579,7 @@
             
             <div class="about-content">
                 <p>I'm an IT Business Analyst with a proven track record of aligning business objectives with technical execution across Indonesia's FinTech and securities trading sectors. My expertise lies in the intersection of three critical elements: <strong>regulatory precision</strong> (navigating OJK and IDX compliance frameworks), <strong>stakeholder alignment</strong> (translating C-level vision into executable user stories), and <strong>technical feasibility</strong> (leveraging SQL validation, API integration strategies, and Agile methodologies).</p>
-                
-                <p>Currently at BNI Sekuritas, I lead requirements for the BIONS platform—a multi-asset investment system serving thousands of retail and institutional clients. My work directly impacts compliance with IDX transaction reporting standards while driving measurable performance improvements: 30% faster delivery cycles, 25% accuracy gains in trade routing, and zero regulatory non-conformities in recent audits.</p>
-                
+                                
                 <div class="highlight-box">
                     <strong>Why FinTech & Securities?</strong> Indonesia's financial technology landscape uniquely challenges practitioners to balance rapid digital transformation with stringent regulatory oversight. I've spent years mastering this equilibrium—from reducing manual reconciliation in back-office trading workflows to cutting operational costs in agricultural lending platforms.
                 </div>
@@ -502,8 +652,8 @@
             </div>
         </div>
     </section>
-    
-<!-- What I Offer Section -->
+
+    <!-- What I Offer Section -->
     <section id="services">
         <div class="container">
             <h2 class="section-title">What I Offer</h2>
@@ -593,12 +743,12 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Case Studies Section -->
-    <section id="projects">
+    <section id="projects" style="background: white;">
         <div class="container">
             <h2 class="section-title">Featured Case Studies</h2>
-            <p class="section-subtitle">Real-World Impact Across FinTech & Securities</p>
+            <p class="section-subtitle">Real Impact Across FinTech & Securities</p>
             
             <!-- Case Study 1: BIONS -->
             <div class="case-study">
