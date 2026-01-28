@@ -13,14 +13,15 @@
 }
 
 .dark {
-  --bg: #0f172a;
-  --text: #e2e8f0;
-  --text-light: #94a3b8;
-  --accent: #60a5fa;
-  --accent-hover: #93bbfc;
-  --border: #334155;
-  --card-bg: #1e293b;
-  --shadow: rgba(0, 0, 0, 0.3);
+  --bg: #121826; /* lebih abu-gelap, bukan hitam pekat - lebih nyaman */
+  --text: #f1f5f9; /* teks utama lebih putih cerah */
+  --text-light: #cbd5e1; /* teks sekunder lebih lembut */
+  --accent: #86bdfd; /* biru lebih soft/pastel, nggak terlalu menyilaukan */
+  --accent-hover: #a5ceff; /* hover lebih halus */
+  --border: #475569; /* border lebih netral */
+  --card-bg: #1e293b; /* card tetap gelap tapi kontras pas */
+  --shadow: rgba(0, 0, 0, 0.4); /* shadow sedikit lebih soft */
+}
 }
 
 /* Global Styles */
@@ -237,4 +238,81 @@ a:hover {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Perbaikan spacing umum - lebih bernapas */
+.section > div, .highlights-box, .cta-box, .case-study, .quick-wins, .testimonial-card, .cert-card, .learning-commitment {
+  padding: 2.5rem; /* naik dari 2rem jadi lebih lega */
+}
+
+h2, h3, h4 {
+  margin-bottom: 1.5rem; /* jarak bawah judul lebih besar */
+}
+
+p, ul {
+  margin bottoms: 1.5rem; /* jarak antar paragraf/list lebih lega */
+}
+
+ul {
+  padding-left: 1.5rem; /* indent list lebih nyaman */
+}
+
+li {
+  margin-bottom: 0.75rem; /* jarak antar item list */
+}
+
+/* Footer lebih mobile-friendly */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  text-align: center; /* center di mobile */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.8rem;
+}
+
+/* Tombol lebih spacious */
+.btn {
+  padding: 14px 28px; /* sedikit lebih besar */
+  font-size: 1rem;
+}
+
+.btn.large {
+  padding: 18px 36px;
+  font-size: 1.2rem;
+}
+
+/* Case studies spacing lebih baik */
+.case-section {
+  margin-bottom: 2rem;
+}
+
+.results-grid, .quick-wins-grid {
+  margin-top: 1.5rem;
+}
+
+/* Mobile fine-tuning */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+  
+  .container {
+    padding: 0 1.5rem; /* lebih lega di HP */
+  }
+  
+  .hero-content {
+    padding: 40px 0;
+  }
+  
+  .profile-img {
+    max-width: 180px;
+  }
 }
