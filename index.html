@@ -14,18 +14,11 @@
     <meta property="og:url" content="https://mfarhancp.github.io/">
     
     <!-- Your existing CSS here -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-    <!-- Tombol Dark Mode Cantik -->
-<button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-  <span class="sun">☀️</span>
-  <span class="moon">🌙</span>
-</button>
-
-<!-- Link Pakaian Cantik & Pengatur Tombol -->
-<link rel="stylesheet" href="styles.css">
-<script src="script.js"></script>
 <body>
+    <div id="preloader"></div>
 
 <!-- HERO SECTION -->
 <section id="hero">
@@ -605,6 +598,31 @@
 </footer>
 
 <!-- Your existing scripts here -->
+<!-- Tombol Dark Mode -->
+    <button id="theme-toggle" aria-label="Toggle Dark Mode">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+    </button>
 
+    <!-- Script Dark Mode & Preloader -->
+    <script>
+        // Dark mode toggle + auto detect system preference
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+        });
+
+        // Preloader
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
 </body>
 </html>
