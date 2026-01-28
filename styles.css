@@ -1,30 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* CSS Variables untuk Light & Dark Mode */
+/* ============================================
+   DESIGN SYSTEM - Executive BA Theme
+   ============================================ */
 :root {
-  --bg: #ffffff;
-  --text: #1f2937;
-  --text-light: #4b5563;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --border: #e5e7eb;
-  --card-bg: #f9fafb;
-  --shadow: rgba(0, 0, 0, 0.05);
+  /* Color Palette - Warm Professional (Bukan biru standar) */
+  --color-bg: #fafaf9; /* Warm white */
+  --color-surface: #ffffff;
+  --color-text: #1c1917; /* Warm black */
+  --color-text-muted: #78716c; /* Warm gray */
+  --color-accent: #0ea5e9; /* Ocean blue - lebih fresh */
+  --color-accent-soft: #e0f2fe;
+  --color-border: #e7e5e4; /* Warm border */
+  
+  /* Spacing - Generous Breathing Room */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 8rem;
+  
+  /* Typography Scale - Dramatic Hierarchy */
+  --text-sm: 0.875rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4rem;
+  
+  /* Effects */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Dark Mode - Deep Navy (Tidak hitam pekat) */
 .dark {
-  --bg: #121826; /* lebih abu-gelap, bukan hitam pekat - lebih nyaman */
-  --text: #f1f5f9; /* teks utama lebih putih cerah */
-  --text-light: #cbd5e1; /* teks sekunder lebih lembut */
-  --accent: #86bdfd; /* biru lebih soft/pastel, nggak terlalu menyilaukan */
-  --accent-hover: #a5ceff; /* hover lebih halus */
-  --border: #475569; /* border lebih netral */
-  --card-bg: #1e293b; /* card tetap gelap tapi kontras pas */
-  --shadow: rgba(0, 0, 0, 0.4); /* shadow sedikit lebih soft */
-}
+  --color-bg: #0f172a; /* Slate 900 */
+  --color-surface: #1e293b; /* Slate 800 */
+  --color-text: #f8fafc; /* Slate 50 */
+  --color-text-muted: #94a3b8; /* Slate 400 */
+  --color-accent: #38bdf8; /* Sky 400 - lebih terang di dark */
+  --color-accent-soft: rgba(56, 189, 248, 0.1);
+  --color-border: #334155; /* Slate 700 */
 }
 
-/* Global Styles */
+/* ============================================
+   RESET & BASE
+   ============================================ */
 * {
   margin: 0;
   padding: 0;
@@ -36,58 +68,115 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
-  transition: background 0.4s ease, color 0.4s ease;
+  font-size: var(--text-base);
+  transition: background-color 0.4s var(--ease-smooth), color 0.4s var(--ease-smooth);
   overflow-x: hidden;
 }
 
-/* Preloader */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.6s ease;
-  opacity: 1;
+/* Selection */
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
 }
 
-#preloader::after {
-  content: "";
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--accent);
-  border-top: 4px transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-body.loaded #preloader {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Container utama */
+/* ============================================
+   LAYOUT SYSTEM
+   ============================================ */
 .container {
-  max-width: 1200px;
+  max-width: 1100px; /* Lebih sempit = lebih exclusive feel */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--space-lg);
 }
 
-/* Section styling & animations */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+}
+
+/* ============================================
+   NAVIGATION (Tambahkan ini ke HTML nanti)
+   ============================================ */
+
+/* ============================================
+   TYPOGRAPHY - HIERARCHY YANG KUAT
+   ============================================ */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  background: linear-gradient(to right, var(--color-text), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark h1 {
+  background: linear-gradient(to right, #f8fafc, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+h2 {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+  position: relative;
+  display: inline-block;
+}
+
+/* Accent line under h2 */
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
+}
+
+p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+  max-width: 65ch; /* Optimal reading width */
+}
+
+.subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+  font-weight: 400;
+}
+
+/* ============================================
+   SECTIONS - SPACING GENEROUS
+   ============================================ */
 .section {
-  padding: 80px 0;
+  padding: var(--space-2xl) 0;
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(20px);
+  transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
 }
 
 body.loaded .section {
@@ -95,459 +184,512 @@ body.loaded .section {
   transform: translateY(0);
 }
 
-/* Staggered delay */
-body.loaded .section:nth-child(1) { transition-delay: 0.2s; }
-body.loaded .section:nth-child(2) { transition-delay: 0.4s; }
-body.loaded .section:nth-child(3) { transition-delay: 0.6s; }
-body.loaded .section:nth-child(4) { transition-delay: 0.8s; }
-body.loaded .section:nth-child(5) { transition-delay: 1.0s; }
-body.loaded .section:nth-child(6) { transition-delay: 1.2s; }
-body.loaded .section:nth-child(7) { transition-delay: 1.4s; }
-body.loaded .section:nth-child(8) { transition-delay: 1.6s; }
-body.loaded .section:nth-child(9) { transition-delay: 1.8s; }
+/* Staggered animation */
+body.loaded .section:nth-child(1) { transition-delay: 0.1s; }
+body.loaded .section:nth-child(2) { transition-delay: 0.2s; }
+body.loaded .section:nth-child(3) { transition-delay: 0.3s; }
+body.loaded .section:nth-child(4) { transition-delay: 0.4s; }
 
-/* Card-like styling */
-.section > div, .section ul, .highlights-box, .cta-box, .case-study, .quick-wins, .testimonial-card, .cert-card {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px var(--shadow);
-  margin-bottom: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ============================================
+   HERO SECTION - ASYMMETRIC LAYOUT
+   ============================================ */
+#hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.section > div:hover, .section ul:hover, .highlights-box:hover, .case-study:hover, .testimonial-card:hover, .cert-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px var(--shadow);
+#hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
 }
 
-/* Typography & links */
-h1, h2, h3, h4 {
-  color: var(--accent);
-  margin-bottom: 1rem;
-  transition: color 0.3s;
-}
-
-h1 { font-size: 2.8rem; }
-h2 { font-size: 2.2rem; }
-h3 { font-size: 1.5rem; }
-
-p, li {
-  color: var(--text-light);
-  margin-bottom: 1rem;
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: var(--accent-hover);
-}
-
-/* Hero specific */
 .hero-content {
-  text-align: center;
-  padding: 60px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  text-align: left;
+}
+
+.hero-text h1 {
+  margin-bottom: var(--space-sm);
+}
+
+.hero-text .tagline {
+  font-size: var(--text-xl);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.profile-img-container {
+  position: relative;
+  justify-self: end;
 }
 
 .profile-img {
-  border-radius: 50%;
-  max-width: 220px;
-  border: 6px solid var(--accent);
-  margin-bottom: 2rem;
-  box-shadow: 0 15px 30px var(--shadow);
-  transition: transform 0.4s ease;
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: none; /* Hapus border yang kaku */
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.5s var(--ease-bounce);
 }
 
 .profile-img:hover {
-  transform: scale(1.08);
+  transform: scale(1.02) rotate(-1deg);
+}
+
+/* Decorative element behind photo */
+.profile-img-container::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+  opacity: 0.2;
 }
 
 .contact-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
+  gap: var(--space-sm);
 }
 
+/* ============================================
+   BUTTONS - MODERN PILL STYLE
+   ============================================ */
 .btn {
-  padding: 12px 24px;
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 14px 28px;
+  border-radius: 100px; /* Pill shape */
   font-weight: 600;
-  background: var(--accent);
-  color: white;
-  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-smooth);
+  border: 2px solid transparent;
+  cursor: pointer;
 }
 
-.btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-3px);
+.btn-primary {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.dark .btn-primary {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .btn.large {
-  padding: 16px 32px;
+  padding: 18px 36px;
   font-size: 1.1rem;
 }
 
-/* Grids responsif */
-.competency-grid, .services-grid, .testimonials-grid, .certifications-grid, .quick-wins-grid, .results-grid, .cta-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+/* ============================================
+   CARDS - SOFT MINIMALISM
+   ============================================ */
+.card, .highlights-box, .case-study, 
+.testimonial-card, .cert-card, .service-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  transition: all 0.3s var(--ease-smooth);
 }
 
-/* Dark mode toggle button */
+.card:hover, .highlights-box:hover, .case-study:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-accent);
+}
+
+/* Grid layouts */
+.competency-grid, .services-grid, .testimonials-grid, 
+.certifications-grid, .cta-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+/* Service Card Special */
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card.featured {
+  border: 2px solid var(--color-accent);
+  background: linear-gradient(to bottom, var(--color-surface), var(--color-accent-soft));
+}
+
+.badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-accent);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.service-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-border);
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+
+/* ============================================
+   CASE STUDIES - TIMELINE STYLE
+   ============================================ */
+.case-study {
+  position: relative;
+  margin-bottom: var(--space-lg);
+  border-left: 4px solid var(--color-accent);
+}
+
+.case-header h3 {
+  font-size: var(--text-xl);
+  color: var(--color-accent);
+  margin-bottom: 0.25rem;
+}
+
+.case-meta {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+  font-weight: 500;
+}
+
+.case-section {
+  margin-bottom: var(--space-md);
+}
+
+.case-section h4 {
+  font-size: var(--text-base);
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Results Grid - Bento Style */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.result-card {
+  background: var(--color-accent-soft);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  border: 1px solid transparent;
+  transition: transform 0.2s;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+
+.result-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.result-label {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.3;
+}
+
+/* ============================================
+   TESTIMONIALS - QUOTE STYLE
+   ============================================ */
+.testimonial-card {
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 6rem;
+  color: var(--color-accent);
+  opacity: 0.2;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.quote {
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+
+.author {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.author strong {
+  color: var(--color-text);
+  display: block;
+  font-size: var(--text-base);
+  font-style: normal;
+  margin-bottom: 0.25rem;
+}
+
+/* ============================================
+   CTA SECTION - STANDOUT
+   ============================================ */
+#cta-final {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  margin: var(--space-2xl) 0;
+  text-align: center;
+}
+
+#cta-final h2::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ============================================
+   FOOTER - CLEAN PROFESSIONAL
+   ============================================ */
+footer {
+  background: var(--color-surface);
+  padding: var(--space-xl) 0 var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.footer-section h3 {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section li {
+  margin-bottom: var(--space-xs);
+}
+
+.footer-section a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: color 0.2s;
+}
+
+.footer-section a:hover {
+  color: var(--color-accent);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   DARK MODE TOGGLE - MODERN
+   ============================================ */
 #theme-toggle {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: var(--card-bg);
-  border: 2px solid var(--border);
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  z-index: 1000;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px var(--shadow);
-  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s var(--ease-smooth);
+  z-index: 1000;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  border-color: var(--color-accent);
 }
 
 #theme-toggle .moon { display: none; }
 .dark #theme-toggle .moon { display: block; }
 .dark #theme-toggle .sun { display: none; }
 
-#theme-toggle:hover {
-  transform: scale(1.1);
-}
-
-/* Responsif */
-@media (max-width: 768px) {
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.8rem; }
-  .section { padding: 60px 0; }
-}
-
-/* Keyframes */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Perbaikan spacing umum - lebih bernapas */
-.section > div, .highlights-box, .cta-box, .case-study, .quick-wins, .testimonial-card, .cert-card, .learning-commitment {
-  padding: 2.5rem; /* naik dari 2rem jadi lebih lega */
-}
-
-h2, h3, h4 {
-  margin-bottom: 1.5rem; /* jarak bawah judul lebih besar */
-}
-
-p, ul {
-  margin bottoms: 1.5rem; /* jarak antar paragraf/list lebih lega */
-}
-
-ul {
-  padding-left: 1.5rem; /* indent list lebih nyaman */
-}
-
-li {
-  margin-bottom: 0.75rem; /* jarak antar item list */
-}
-
-/* Footer lebih mobile-friendly */
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  text-align: center; /* center di mobile */
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section li {
-  margin-bottom: 0.8rem;
-}
-
-/* Tombol lebih spacious */
-.btn {
-  padding: 14px 28px; /* sedikit lebih besar */
-  font-size: 1rem;
-}
-
-.btn.large {
-  padding: 18px 36px;
-  font-size: 1.2rem;
-}
-
-/* Case studies spacing lebih baik */
-.case-section {
-  margin-bottom: 2rem;
-}
-
-.results-grid, .quick-wins-grid {
-  margin-top: 1.5rem;
-}
-
-/* Mobile fine-tuning */
-@media (max-width: 768px) {
-  .section {
-    padding: 60px 0;
-  }
-  
-  .container {
-    padding: 0 1.5rem; /* lebih lega di HP */
-  }
-  
-  .hero-content {
-    padding: 40px 0;
-  }
-  
-  .profile-img {
-    max-width: 180px;
-  }
-}
 /* ============================================
-   UI/UX ENHANCEMENT LAYER - Tambahan di Akhir
+   PRELOADER - MINIMAL
    ============================================ */
-
-/* 1. PERBAIKAN TYPOGRAPHY & SPACING */
-:root {
-  /* Spacing Scale (tambahan) */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4rem;
-  
-  /* Typography Improvement */
-  --leading-tight: 1.2;
-  --leading-relaxed: 1.7;
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s, visibility 0.5s;
 }
 
-/* Override: Section lebih bernapas */
-.section {
-  padding: 100px 0; /* naik dari 80px */
-  line-height: var(--leading-relaxed);
+#preloader::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
 }
 
-/* Override: Container padding lebih aman di mobile */
-.container {
-  padding: 0 24px;
+body.loaded #preloader {
+  opacity: 0;
+  visibility: hidden;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px; /* tetap nyaman di HP */
-  }
-  
-  .section {
-    padding: 60px 0;
-  }
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-/* Override: Heading hierarchy lebih jelas */
-h1 { 
-  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive size */
-  line-height: var(--leading-tight);
-  letter-spacing: -0.02em;
-}
-
-h2 { 
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  line-height: var(--leading-tight);
-  margin-bottom: 1.5rem;
-}
-
-h3 { 
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-/* 2. PERBAIKAN DARK MODE - Lebih Eye-Friendly */
-.dark {
-  /* Override warna yang sudah bagus jadi lebih optimal */
-  --bg: #0f172a; /* Slate 900 - sedikit lebih biru dari #121826 */
-  --text: #f8fafc; /* Slate 50 - putih lebih soft */
-  --text-light: #94a3b8; /* Slate 400 - abu lebih lembut */
-  --card-bg: #1e293b; /* Slate 800 */
-  --border: rgba(255, 255, 255, 0.1); /* Border lebih subtle */
-  --shadow: rgba(0, 0, 0, 0.3);
-}
-
-/* 3. CARD REDESIGN - Lebih Modern & Soft */
-.section > div, 
-.highlights-box, 
-.cta-box, 
-.case-study, 
-.quick-wins, 
-.testimonial-card, 
-.cert-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border); /* Tambah border subtle */
-  border-radius: 16px; /* Lebih rounded */
-  padding: 2.5rem; /* Lebih spacious */
-  box-shadow: 0 4px 6px -1px var(--shadow), 
-              0 2px 4px -1px var(--shadow); /* Shadow lebih soft layered */
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Easing lebih smooth */
-}
-
-/* Hover lebih subtle */
-.section > div:hover, 
-.case-study:hover, 
-.testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px var(--shadow), 
-              0 10px 10px -5px var(--shadow);
-}
-
-/* 4. HERO SECTION ENHANCEMENT */
-.hero-content {
-  padding: 100px 0 80px; /* Lebih breathing room */
-}
-
-.profile-img {
-  width: 240px; /* Fixed size lebih stabil */
-  height: 240px;
-  object-fit: cover;
-  border-width: 4px; /* Tipis sedikit biar lebih elegant */
-  box-shadow: 0 20px 40px -10px var(--shadow); /* Shadow lebih smooth */
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy effect */
-}
-
-.profile-img:hover {
-  transform: scale(1.05) rotate(2deg); /* Slight rotation biar hidup */
-}
-
-/* 5. BUTTON IMPROVEMENT */
-.btn {
-  padding: 14px 28px;
-  border-radius: 10px; /* Lebih rounded modern */
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  transition: all 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn:active {
-  transform: translateY(0); /* Reset saat click */
-}
-
-.btn.large {
-  padding: 18px 36px;
-  font-size: 1.1rem;
-}
-
-/* 6. GRID SPACING OPTIMIZATION */
-.competency-grid, 
-.services-grid, 
-.testimonials-grid, 
-.certifications-grid {
-  gap: 2.5rem; /* Lebih lega antar card */
-  margin-top: 2rem;
-}
-
-/* 7. CASE STUDY SPECIFIC - Timeline styling */
-.case-study h3 {
-  color: var(--accent);
-  font-size: 1.3rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--border);
-}
-
-/* Results grid lebih menonjol */
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-/* Metric styling (tambahan class jika diperlukan) */
-.results-grid strong {
-  display: block;
-  font-size: 2rem;
-  color: var(--accent);
-  margin-bottom: 0.25rem;
-  line-height: 1;
-}
-
-/* 8. FOOTER CLEANUP */
-.footer-content {
-  padding: 3rem 0;
-  border-top: 1px solid var(--border);
-  margin-top: 4rem;
-}
-
-/* 9. SMOOTH SCROLLBAR */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 5px;
-  border: 2px solid var(--bg);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-light);
-}
-
-/* 10. RESPONSIVE FINE-TUNING */
-@media (max-width: 768px) {
+/* ============================================
+   RESPONSIVE - MOBILE OPTIMIZATION
+   ============================================ */
+@media (max-width: 968px) {
   .hero-content {
-    padding: 60px 0 40px;
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-lg);
+  }
+  
+  .hero-text h1 {
+    font-size: var(--text-3xl);
+  }
+  
+  .profile-img-container {
+    justify-self: center;
+    order: -1; /* Foto di atas teks di mobile */
   }
   
   .profile-img {
-    width: 180px;
-    height: 180px;
+    width: 250px;
+    height: 250px;
   }
   
-  /* Stack grid lebih rapat di mobile */
-  .competency-grid, 
-  .services-grid {
-    gap: 1.5rem;
+  .contact-buttons {
+    justify-content: center;
   }
   
-  /* Card padding lebih kecil di mobile */
-  .section > div, 
-  .case-study {
-    padding: 1.5rem;
+  h2::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
   
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.6rem; }
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    text-align: center;
+  }
 }
 
-/* 11. ACCESSIBILITY FOCUS */
-a:focus-visible, 
-button:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 4px;
-  border-radius: 4px;
+@media (max-width: 640px) {
+  :root {
+    --text-4xl: 2.5rem;
+    --text-3xl: 2rem;
+    --text-2xl: 1.5rem;
+    --space-2xl: 4rem;
+  }
+  
+  .competency-grid, .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* Reduced motion support */
+/* ============================================
+   UTILITY - ACCESSIBILITY
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
@@ -557,18 +699,9 @@ button:focus-visible {
     transform: none !important;
   }
 }
-/* Paste ini dulu untuk instant improvement: */
-:root {
-  --space-xl: 4rem;
-  --radius-xl: 1rem;
-  --duration-base: 250ms;
-}
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.profile-img {
-  border-radius: var(--radius-xl); /* Square with rounded corners */
+/* Focus visible */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
 }
