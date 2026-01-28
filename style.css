@@ -180,3 +180,66 @@ a:hover {
   .hero, .section { padding: 2rem 1rem; }
   .theme-toggle { top: 0.5rem; right: 0.5rem; width: 50px; height: 28px; }
 }
+
+/* Centering dan hero lebih cantik */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero-content {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.profile-img {
+  border-radius: 50%;
+  max-width: 220px;
+  border: 6px solid var(--accent);
+  margin-bottom: 2rem;
+  box-shadow: 0 15px 30px var(--shadow);
+  transition: transform 0.4s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.08);
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: var(--accent);
+  color: white !important;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-3px);
+}
+
+.btn.primary { background: var(--accent); }
+.btn.large { padding: 16px 32px; font-size: 1.1rem; }
+
+/* Delay animasi lebih banyak (buat semua section) */
+body.loaded .section:nth-child(8) { transition-delay: 1.6s; }
+body.loaded .section:nth-child(9) { transition-delay: 1.8s; }
+body.loaded .section:nth-child(10) { transition-delay: 2s; }
+
+/* Grid lebih responsif di mobile */
+.competency-grid, .services-grid, .testimonials-grid, .certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
