@@ -22,7 +22,6 @@
   --card-bg: #1e293b; /* card tetap gelap tapi kontras pas */
   --shadow: rgba(0, 0, 0, 0.4); /* shadow sedikit lebih soft */
 }
-}
 
 /* Global Styles */
 * {
@@ -314,5 +313,246 @@ li {
   
   .profile-img {
     max-width: 180px;
+  }
+}
+/* ============================================
+   UI/UX ENHANCEMENT LAYER - Tambahan di Akhir
+   ============================================ */
+
+/* 1. PERBAIKAN TYPOGRAPHY & SPACING */
+:root {
+  /* Spacing Scale (tambahan) */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  
+  /* Typography Improvement */
+  --leading-tight: 1.2;
+  --leading-relaxed: 1.7;
+}
+
+/* Override: Section lebih bernapas */
+.section {
+  padding: 100px 0; /* naik dari 80px */
+  line-height: var(--leading-relaxed);
+}
+
+/* Override: Container padding lebih aman di mobile */
+.container {
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px; /* tetap nyaman di HP */
+  }
+  
+  .section {
+    padding: 60px 0;
+  }
+}
+
+/* Override: Heading hierarchy lebih jelas */
+h1 { 
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive size */
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+}
+
+h2 { 
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  line-height: var(--leading-tight);
+  margin-bottom: 1.5rem;
+}
+
+h3 { 
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+/* 2. PERBAIKAN DARK MODE - Lebih Eye-Friendly */
+.dark {
+  /* Override warna yang sudah bagus jadi lebih optimal */
+  --bg: #0f172a; /* Slate 900 - sedikit lebih biru dari #121826 */
+  --text: #f8fafc; /* Slate 50 - putih lebih soft */
+  --text-light: #94a3b8; /* Slate 400 - abu lebih lembut */
+  --card-bg: #1e293b; /* Slate 800 */
+  --border: rgba(255, 255, 255, 0.1); /* Border lebih subtle */
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* 3. CARD REDESIGN - Lebih Modern & Soft */
+.section > div, 
+.highlights-box, 
+.cta-box, 
+.case-study, 
+.quick-wins, 
+.testimonial-card, 
+.cert-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border); /* Tambah border subtle */
+  border-radius: 16px; /* Lebih rounded */
+  padding: 2.5rem; /* Lebih spacious */
+  box-shadow: 0 4px 6px -1px var(--shadow), 
+              0 2px 4px -1px var(--shadow); /* Shadow lebih soft layered */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Easing lebih smooth */
+}
+
+/* Hover lebih subtle */
+.section > div:hover, 
+.case-study:hover, 
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px var(--shadow), 
+              0 10px 10px -5px var(--shadow);
+}
+
+/* 4. HERO SECTION ENHANCEMENT */
+.hero-content {
+  padding: 100px 0 80px; /* Lebih breathing room */
+}
+
+.profile-img {
+  width: 240px; /* Fixed size lebih stabil */
+  height: 240px;
+  object-fit: cover;
+  border-width: 4px; /* Tipis sedikit biar lebih elegant */
+  box-shadow: 0 20px 40px -10px var(--shadow); /* Shadow lebih smooth */
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy effect */
+}
+
+.profile-img:hover {
+  transform: scale(1.05) rotate(2deg); /* Slight rotation biar hidup */
+}
+
+/* 5. BUTTON IMPROVEMENT */
+.btn {
+  padding: 14px 28px;
+  border-radius: 10px; /* Lebih rounded modern */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: translateY(0); /* Reset saat click */
+}
+
+.btn.large {
+  padding: 18px 36px;
+  font-size: 1.1rem;
+}
+
+/* 6. GRID SPACING OPTIMIZATION */
+.competency-grid, 
+.services-grid, 
+.testimonials-grid, 
+.certifications-grid {
+  gap: 2.5rem; /* Lebih lega antar card */
+  margin-top: 2rem;
+}
+
+/* 7. CASE STUDY SPECIFIC - Timeline styling */
+.case-study h3 {
+  color: var(--accent);
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+/* Results grid lebih menonjol */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Metric styling (tambahan class jika diperlukan) */
+.results-grid strong {
+  display: block;
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+/* 8. FOOTER CLEANUP */
+.footer-content {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+}
+
+/* 9. SMOOTH SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 5px;
+  border: 2px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-light);
+}
+
+/* 10. RESPONSIVE FINE-TUNING */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 60px 0 40px;
+  }
+  
+  .profile-img {
+    width: 180px;
+    height: 180px;
+  }
+  
+  /* Stack grid lebih rapat di mobile */
+  .competency-grid, 
+  .services-grid {
+    gap: 1.5rem;
+  }
+  
+  /* Card padding lebih kecil di mobile */
+  .section > div, 
+  .case-study {
+    padding: 1.5rem;
+  }
+  
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.6rem; }
+}
+
+/* 11. ACCESSIBILITY FOCUS */
+a:focus-visible, 
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .section {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
