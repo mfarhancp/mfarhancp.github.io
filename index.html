@@ -4,455 +4,956 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mochammad Farhan - IT Business Analyst</title>
-    <meta name="description" content="IT Business Analyst with 7+ years in FinTech & Securities. Expert in BRD/FRD, Agile/Scrum, SQL, OJK/IDX compliance.">
-    <meta name="keywords" content="IT Business Analyst Jakarta, FinTech BA, Securities Trading, BRD FRD, Agile Scrum, SQL PostgreSQL, OJK IDX">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        /* CSS Variables untuk Light & Dark Mode */
-        :root {
-          --bg: #ffffff;
-          --text: #1f2937;
-          --text-light: #4b5563;
-          --accent: #3b82f6;
-          --accent-hover:  --accent-hover: #2563eb;
-          --border: #e5e7eb;
-          --card-bg: #f9fafb;
-          --shadow: rgba(0, 0, 0, 0.05);
-        }
-
-        .dark {
-          --bg: #121826;
-          --text: #f1f5f9;
-          --text-light: #cbd5e1;
-          --accent: #86bdfd;
-          --accent-hover: #a5ceff;
-          --border: #475569;
-          --card-bg: #1e293b;
-          --shadow: rgba(0, 0, 0, 0.4);
-        }
-
-        /* Global Styles */
         * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
+        
         body {
-          font-family: 'Inter', sans-serif;
-          background: var(--bg);
-          color: var(--text);
-          line-height: 1.6;
-          transition: background 0.4s ease, color 0.4s ease;
-          overflow-x: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #f8fafc;
         }
-
-        /* Preloader */
-        #preloader {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: var(--bg);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 9999;
-          transition: opacity 0.6s ease;
-          opacity: 1;
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-
-        #preloader::after {
-          content: "";
-          width: 40px;
-          height: 40px;
-          border: 4px solid var(--accent);
-          border-top: 4px transparent;
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="white" fill-opacity="0.1"/></svg>');
+            opacity: 0.1;
         }
-
-        body.loaded #preloader {
-          opacity: 0;
-          pointer-events: none;
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
-
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin: 0 auto 20px;
+            object-fit: cover;
+            background: #64748b;
+        }
+        
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+        
+        .hero .tagline {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+        
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        
+        .contact-links a:hover {
+            background: white;
+            color: #1e3a8a;
+            transform: translateY(-2px);
+        }
+        
         /* Container */
         .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        /* Section & Animations */
-        .section {
-          padding: 80px 0;
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.8s ease, transform 0.8s ease;
+        
+        /* Section Styling */
+        section {
+            padding: 60px 0;
         }
-
-        body.loaded .section {
-          opacity: 1;
-          transform: translateY(0);
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            color: #1e3a8a;
+            font-weight: 700;
         }
-
-        body.loaded .section:nth-child(1) { transition-delay: 0.2s; }
-        body.loaded .section:nth-child(2) { transition-delay: 0.4s; }
-        body.loaded .section:nth-child(3) { transition-delay: 0.6s; }
-        body.loaded .section:nth-child(4) { transition-delay: 0.8s; }
-        body.loaded .section:nth-child(5) { transition-delay: 1.0s; }
-        body.loaded .section:nth-child(6) { transition-delay: 1.2s; }
-
-        /* Card Styling */
-        .highlights-box, .timeline-content, .skill-category, .education-item {
-          background: var(--card-bg);
-          padding: 2.5rem;
-          border-radius: 12px;
-          box-shadow: 0 4px 6px var(--shadow);
-          margin-bottom: 2rem;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 50px;
+            font-size: 1.1em;
         }
-
-        .highlights-box:hover, .timeline-content:hover, .skill-category:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 20px var(--shadow);
+        
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            line-height: 1.8;
         }
-
-        /* Typography */
-        h1 { font-size: 2.8rem; color: var(--accent); }
-        h2 { font-size: 2.2rem; color: var(--accent); margin-bottom: 1.5rem; }
-        h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        p, li { color: var(--text-light); margin-bottom: 1rem; }
-        a { color: var(--accent); text-decoration: none; }
-
-        /* Hero */
-        .hero-content {
-          text-align: center;
-          padding: 60px 0;
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: #334155;
         }
-
-        .profile-img {
-          border-radius: 50%;
-          max-width: 220px;
-          border: 6px solid var(--accent);
-          margin-bottom: 2rem;
-          box-shadow: 0 15px 30px var(--shadow);
-          transition: transform 0.4s ease;
+        
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 6px;
         }
-
-        .profile-img:hover {
-          transform: scale(1.08);
-        }
-
-        .contact-buttons {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-          justify-content: center;
-          margin-top: 2rem;
-        }
-
-        .btn {
-          padding: 14px 28px;
-          border-radius: 8px;
-          font-weight: 600;
-          background: var(--accent);
-          color: white;
-          transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-          background: var(--accent-hover);
-          transform: translateY(-3px);
-        }
-
-        .btn.large {
-          padding: 18px 36px;
-          font-size: 1.2rem;
-        }
-
-        /* Timeline */
-        .timeline {
-          position: relative;
-          max-width: 1000px;
-          margin: 0  auto;
-        }
-
-        .timeline::after {
-          content: '';
-          position: absolute;
-          width: 6px;
-          background: var(--border);
-          top: 0;
-          bottom: 0;
-          left: 50%;
-          margin-left: -3px;
-        }
-
-        .timeline-item {
-          padding: 10px 40px;
-          position: relative;
-          width: 50%;
-        }
-
-        .timeline-item::after {
-          content: '';
-          position: absolute;
-          width: 20px;
-          height: 20px;
-          background: var(--accent);
-          border: 4px solid var(--card-bg);
-          top: 15px;
-          border-radius: 50%;
-          z-index: 1;
-        }
-
-        .timeline-item:nth-child(odd) { left: 0; }
-        .timeline-item:nth-child(even) { left: 50%; }
-        .timeline-item:nth-child(even)::after { left: -10px; }
-        .timeline-item:nth-child(odd)::after { right: -10px; }
-
-        .timeline-date {
-          padding: 8px 16px;
-          background: var(--accent);
-          color: white;
-          border-radius: 20px;
-          display: inline-block;
-          margin-bottom: 1rem;
-          font-weight: 600;
-        }
-
-        /* Grids */
+        
+        /* Skills Grid */
         .skills-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
         }
-
-        /* Dark Mode Toggle */
-        #theme-toggle {
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          background: var(--card-bg);
-          border: 2px solid var(--border);
-          border-radius: 50%;
-          width: 50px;
-          height: 50px;
-          cursor: pointer;
-          z-index: 1000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 10px var(--shadow);
-          transition: all 0.3s ease;
+        
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        #theme-toggle .moon { display: none; }
-        .dark #theme-toggle .moon { display: block; }
-        .dark #theme-toggle .sun { display: none; }
-
-        #theme-toggle:hover {
-          transform: scale(1.1);
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.12);
         }
-
-        /* Responsif */
+        
+        .skill-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .skill-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .skill-card ul {
+            list-style: none;
+            color: #475569;
+        }
+        
+        .skill-card li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .skill-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        
+        /* Case Studies */
+        .case-study {
+            background: white;
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            border-left: 5px solid #3b82f6;
+        }
+        
+        .case-study h3 {
+            color: #1e3a8a;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+        
+        .case-meta {
+            color: #64748b;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .case-section {
+            margin: 25px 0;
+        }
+        
+        .case-section h4 {
+            color: #334155;
+            margin-bottom: 12px;
+            font-size: 1.15em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .case-section p, .case-section ul {
+            color: #475569;
+            line-height: 1.7;
+        }
+        
+        .case-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .case-section li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+        }
+        
+        .case-section li::before {
+            content: '▸';
+            position: absolute;
+            left: 5px;
+            color: #3b82f6;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .result-card {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .result-card .metric {
+            font-size: 2em;
+            color: #1e3a8a;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .result-card .label {
+            color: #475569;
+            font-size: 0.9em;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            position: relative;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            border-color: #3b82f6;
+        }
+        
+        .service-card.featured {
+            border: 2px solid #3b82f6;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #3b82f6;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .service-number {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1e3a8a;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            color: #1e3a8a;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .service-desc {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .service-price {
+            background: #f0fdf4;
+            color: #166534;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border-left: 4px solid #22c55e;
+        }
+        
+        .service-features {
+            margin: 25px 0;
+        }
+        
+        .service-features h4 {
+            color: #334155;
+            font-size: 1.05em;
+            margin-bottom: 12px;
+        }
+        
+        .service-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-features li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+            color: #475569;
+            line-height: 1.6;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .service-ideal {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.95em;
+            color: #78350f;
+            line-height: 1.6;
+        }
+        
+        .service-ideal strong {
+            color: #92400e;
+        }
+        
+        .services-cta {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid #bae6fd;
+        }
+        
+        .services-cta h3 {
+            color: #1e3a8a;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .services-cta p {
+            color: #475569;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .services-cta strong {
+            color: #1e3a8a;
+        }
+        
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .cert-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.07);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .cert-icon {
+            font-size: 2.5em;
+        }
+        
+        .cert-info h4 {
+            color: #1e3a8a;
+            margin-bottom: 5px;
+        }
+        
+        .cert-info p {
+            color: #64748b;
+            font-size: 0.9em;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #1e3a8a;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255,255,255,0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #1e3a8a;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-          h1 { font-size: 2.2rem; }
-          .section { padding: 60px 0; }
-          .profile-img { max-width: 180px; }
-          .timeline::after { left: 31px; }
-          .timeline-item { width: 100%; padding-left: 70px; padding-right: 20px; }
-          .timeline-item::after { left: 21px; }
-          .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; }
-        }
-
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="preloader"></div>
-
-    <!-- HERO SECTION -->
-    <section id="hero" class="section">
-        <div class="container">
-            <div class="hero-content">
-                <img src="Foto Farhan.jpeg" alt="Mochammad Farhan" class="profile-img">
-                <h1>Mochammad Farhan</h1>
-                <h2>IT Business Analyst</h2>
-                <p class="tagline">"Bridging Business Needs with Technical Solutions in FinTech & Securities"</p>
-                <div class="contact-buttons">
-                    <a href="mailto:mfarhancp13@gmail.com" class="btn">📧 Email</a>
-                    <a href="https://linkedin.com/in/mfarhancp" class="btn" target="_blank">💼 LinkedIn</a>
-                    <a href="tel:+6281388883231" class="btn">📞 +62 813-8888-3231</a>
-                    <a href="Mochammad_Farhan_IT_Business_Analyst_Resume.pdf" class="btn primary" download>📄 Download Resume</a>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="Foto Farhan.jpeg" alt="Mochammad Farhan" class="profile-img">
+            <h1>Mochammad Farhan</h1>
+            <div class="subtitle">IT Business Analyst</div>
+            <div class="tagline">"Bridging Business Needs with Technical Solutions in FinTech & Securities"</div>
+            
+            <div class="contact-links">
+                <a href="mailto:mfarhancp13@gmail.com">📧 Email</a>
+                <a href="https://linkedin.com/in/mfarhancp" target="_blank">💼 LinkedIn</a>
+                <a href="tel:+6281388883231">📞 +62 813-8888-3231</a>
+                <a href="Mochammad_Farhan_IT_Business_Analyst_Resume,pdf">📄 Download Resume</a>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section">
+    <!-- About Section -->
+    <section id="about">
         <div class="container">
-            <h2>About Me</h2>
-            <p>IT Business Analyst with 7+ years aligning business objectives and technical execution in Indonesia's FinTech and securities sectors. Expert in regulatory compliance (OJK/IDX), stakeholder management, Agile/Scrum, SQL validation, and API integration. Proven track record reducing delivery time by 30%, costs by 40%, and defects across major platforms like BIONS and KoltiPay.</p>
-            <p>Pursuing PMI-ACP and CBAP certifications. Passionate about building impactful solutions in regulated industries.</p>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE TIMELINE -->
-    <section id="experience" class="section">
-        <div class="container">
-            <h2>Professional Experience</h2>
-            <div class="timeline">
-                <!-- BNI Sekuritas -->
-                <div class="timeline-item">
-                    <div class="timeline-date">Jan 2025 – Dec 2025</div>
-                    <div class="timeline-content">
-                        <h3>IT Business Analyst</h3>
-                        <h4>BNI Sekuritas / Investment Banking & Securities</h4>
-                        <ul>
-                            <li>Led requirements elicitation for BIONS multi-investment platform (stocks, mutual funds, bonds), reducing delivery time by 30% through comprehensive FRD/TSD aligned with OJK and IDX regulatory compliance standards.</li>
-                            <li>Conducted gap analysis on back-office trading workflows, reducing manual reconciliation by 30% and ensuring 100% IDX transaction reporting compliance through BPMN process mapping and stakeholder alignment.</li>
-                            <li>Managed 150+ user stories in JIRA for platform enhancements using Agile/Scrum methodology, increasing team velocity by 25% and delivering 10 critical features on-time in Q3 2025.</li>
-                            <li>Executed SQL validation on PostgreSQL trade routing logic, improving data accuracy by 25% and reducing processing errors by 40 incidents per month through systematic query optimization.</li>
-                        </ul>
-                    </div>
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">7+ Years Transforming Business Challenges into Technical Solutions</p>
+            
+            <div class="about-content">
+                <p>I'm an IT Business Analyst with a proven track record of aligning business objectives with technical execution across Indonesia's FinTech and securities trading sectors. My expertise lies in the intersection of three critical elements: <strong>regulatory precision</strong> (navigating OJK and IDX compliance frameworks), <strong>stakeholder alignment</strong> (translating C-level vision into executable user stories), and <strong>technical feasibility</strong> (leveraging SQL validation, API integration strategies, and Agile methodologies).</p>
+                
+                <p>Currently at BNI Sekuritas, I lead requirements for the BIONS platform—a multi-asset investment system serving thousands of retail and institutional clients. My work directly impacts compliance with IDX transaction reporting standards while driving measurable performance improvements: 30% faster delivery cycles, 25% accuracy gains in trade routing, and zero regulatory non-conformities in recent audits.</p>
+                
+                <div class="highlight-box">
+                    <strong>Why FinTech & Securities?</strong> Indonesia's financial technology landscape uniquely challenges practitioners to balance rapid digital transformation with stringent regulatory oversight. I've spent years mastering this equilibrium—from reducing manual reconciliation in back-office trading workflows to cutting operational costs in agricultural lending platforms.
                 </div>
-
-                <!-- KOLTIVA -->
-                <div class="timeline-item">
-                    <div class="timeline-date">Nov 2022 – Dec 2024</div>
-                    <div class="timeline-content">
-                        <h3>Lead Business Analyst & Requirements</h3>
-                        <h4>KOLTIVA / Series B-funded Agritech Startup</h4>
-                        <ul>
-                            <li>Spearheaded KoltiPay digital wallet integration with Artajasa payment gateway, reducing operational costs by 40% through streamlined farmer lending workflows documented in comprehensive BRD/FRD with API integration strategy.</li>
-                            <li>Managed 200+ user stories in JIRA across 6 sprints, led UAT achieving 98% first-time go-live success rate, and trained 50+ field officers on platform features using structured training documentation.</li>
-                            <li>Designed data flow analysis between KoltiPay and Artajasa gateway, reducing transaction failures by 35% for 15,000+ agricultural cooperative members through optimized API integration patterns.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- First Discovery -->
-                <div class="timeline-item">
-                    <div class="timeline-date">Jul 2020 – Oct 2022</div>
-                    <div class="timeline-content">
-                        <h3>Business Analyst</h3>
-                        <h4>First Discovery / Software House serving banking & insurance sectors</h4>
-                        <ul>
-                            <li>Delivered business analysis services for banking and insurance clients, reducing requirement defects by 40% across 10+ enterprise features through rigorous RTM and stakeholder management.</li>
-                            <li>Led Bank Mandiri mobile banking requirements, translating OJK KYC compliance into 80+ user stories with zero critical UAT defects.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- ZKTeco -->
-                <div class="timeline-item">
-                    <div class="timeline-date">May 2017 – Jun 2020</div>
-                    <div class="timeline-content">
-                        <h3>Business Analyst</h3>
-                        <h4>ZKTeco Indonesia / Security Solutions Provider</h4>
-                        <ul>
-                            <li>Analyzed requirements for 15+ biometric access control releases for Bank Mandiri (5 branches) and Bursa Efek Indonesia, defining API specifications that reduced unauthorized access by 85% and enabled 99.9% system uptime for 200+ daily traders.</li>
-                        </ul>
-                    </div>
-                </div>
+                
+                <p>My dual expertise in <strong>business domain knowledge</strong> (securities trading, digital payments, KYC/AML) and <strong>technical execution</strong> (PostgreSQL optimization, BPMN process modeling, API specification) allows me to architect solutions that not only meet compliance standards but also scale efficiently across complex enterprise environments.</p>
+                
+                <p>Beyond project delivery, I'm pursuing PMI-ACP and CBAP certifications to formalize my expertise and contribute to Indonesia's evolving Business Analysis community. Let's build something impactful together.</p>
             </div>
         </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section">
+    <!-- Skills Section -->
+    <section id="skills" style="background: white;">
         <div class="container">
-            <h2>Skills & Expertise</h2>
+            <h2 class="section-title">Core Competencies</h2>
+            <p class="section-subtitle">Technical & Business Analysis Expertise</p>
+            
             <div class="skills-grid">
-                <div class="skill-category">
+                <div class="skill-card">
+                    <div class="icon">📋</div>
                     <h3>Business Analysis</h3>
-                    <p>BRD/FRD, User Stories, Use Case Modeling, BPMN Process Mapping, Gap Analysis, RTM, Stakeholder Management, UAT Planning</p>
+                    <ul>
+                        <li>BRD/FRD Documentation</li>
+                        <li>User Stories & Acceptance Criteria</li>
+                        <li>BPMN Process Mapping</li>
+                        <li>Gap Analysis & As-Is/To-Be Modeling</li>
+                        <li>Use Case Diagrams</li>
+                        <li>Requirements Traceability Matrix (RTM)</li>
+                    </ul>
                 </div>
-                <div class="skill-category">
-                    <h3>Technical & Data</h3>
-                    <p>SQL (PostgreSQL, MySQL), API Integration Strategy, Data Flow Analysis, Swagger, Postman, Data Validation, System Integration Testing</p>
+                
+                <div class="skill-card">
+                    <div class="icon">⚙️</div>
+                    <h3>Technical & API</h3>
+                    <ul>
+                        <li>SQL (PostgreSQL, MySQL)</li>
+                        <li>API Integration Strategy</li>
+                        <li>Swagger/OpenAPI Documentation</li>
+                        <li>Postman API Testing</li>
+                        <li>Data Flow Analysis</li>
+                        <li>JSON/XML Schema Validation</li>
+                    </ul>
                 </div>
-                <div class="skill-category">
-                    <h3>Agile & Tools</h3>
-                    <p>JIRA (Scrum/Kanban), Confluence, Agile/Scrum Methodology, Sprint Planning, Backlog Grooming, Microsoft Visio, Figma, Lucidchart, Miro, Git</p>
+                
+                <div class="skill-card">
+                    <div class="icon">🛠️</div>
+                    <h3>Tools & Platforms</h3>
+                    <ul>
+                        <li>JIRA (Scrum/Kanban)</li>
+                        <li>Confluence Documentation</li>
+                        <li>Microsoft Visio</li>
+                        <li>Figma Prototyping</li>
+                        <li>Git Version Control</li>
+                        <li>Lucidchart, Miro</li>
+                    </ul>
                 </div>
-                <div class="skill-category">
-                    <h3>Domain Knowledge</h3>
-                    <p>FinTech Digital Wallets, Payment Gateways, Securities Trading, Multi-Investment Platforms, Indonesian Regulatory Compliance (OJK, IDX), Banking Systems, Insurance Platforms, Biometric Access Control</p>
+                
+                <div class="skill-card">
+                    <div class="icon">🏦</div>
+                    <h3>Domain Expertise</h3>
+                    <ul>
+                        <li>FinTech Digital Wallets</li>
+                        <li>Securities Trading (BIONS)</li>
+                        <li>OJK/IDX Compliance</li>
+                        <li>KYC/AML Frameworks</li>
+                        <li>Biometric Access Control</li>
+                        <li>Agritech Supply Chain</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EDUCATION & CERTIFICATIONS -->
-    <section id="education" class="section">
+    <!-- What I Offer Section -->
+    <section id="services">
         <div class="container">
-            <h2>Education & Certifications</h2>
-            <div class="education-item">
-                <h3>B.A. in Communication</h3>
-                <p>Indonesia Open University (Universitas Terbuka) — Oct 2022 – Jun 2026 (Expected)</p>
+            <h2 class="section-title">What I Offer</h2>
+            <p class="section-subtitle">Strategic BA Services for FinTech, Banking & Regulated Industries</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <h3>Requirements Review & OJK/IDX Compliance Audit</h3>
+                    <p class="service-desc">Starting a new FinTech initiative or ensuring regulatory compliance? I'll assess your current requirements documentation, identify gaps against OJK/IDX standards, and provide actionable recommendations.</p>
+                    
+                    <div class="service-price">Starting at IDR 5,000,000</div>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li>Comprehensive requirements documentation review</li>
+                            <li>Gap analysis against OJK/IDX regulatory frameworks</li>
+                            <li>Compliance risk assessment report</li>
+                            <li>Prioritized recommendation roadmap</li>
+                            <li>2-hour consultation session</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-ideal">
+                        <strong>Ideal For:</strong> FinTech startups, securities firms launching new platforms, companies facing OJK audits
+                    </div>
+                </div>
+                
+                <div class="service-card featured">
+                    <div class="service-badge">Most Popular</div>
+                    <div class="service-number">02</div>
+                    <h3>Full Business Analysis Engagement</h3>
+                    <p class="service-desc">Need comprehensive BA support for a digital transformation project? I'll work embedded with your team to translate business needs into technical specifications, manage requirements, and ensure successful delivery.</p>
+                    
+                    <div class="service-price">Project-Based: IDR 25,000,000 - 75,000,000</div>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li>Complete BRD/FRD/TSD documentation</li>
+                            <li>User story creation & backlog management (JIRA)</li>
+                            <li>BPMN process mapping (As-Is/To-Be workflows)</li>
+                            <li>API integration specifications (Swagger/OpenAPI)</li>
+                            <li>SQL validation scripts for data integrity</li>
+                            <li>UAT planning, test case creation & execution support</li>
+                            <li>Stakeholder workshops & requirements elicitation</li>
+                            <li>Requirements Traceability Matrix (RTM)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-ideal">
+                        <strong>Ideal For:</strong> Digital wallet integrations, securities trading platforms (BIONS-like), mobile banking KYC projects, payment gateway implementations
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <h3>Ongoing BA-as-a-Service (Retainer)</h3>
+                    <p class="service-desc">Get continuous BA support without the overhead of a full-time hire. Perfect for scaling product teams, agritech platforms, or companies with recurring compliance needs.</p>
+                    
+                    <div class="service-price">IDR 20,000,000/month (40 hours) or IDR 35,000,000/month (80 hours)</div>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li>Dedicated BA support (part-time or near full-time)</li>
+                            <li>Sprint planning & backlog grooming participation</li>
+                            <li>Ongoing requirements documentation updates</li>
+                            <li>Stakeholder alignment sessions</li>
+                            <li>Regulatory compliance monitoring (OJK/BI/IDX updates)</li>
+                            <li>UAT coordination & defect triage</li>
+                            <li>Monthly delivery reports & metrics tracking</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-ideal">
+                        <strong>Ideal For:</strong> Startups post-Series A, growing FinTech companies, enterprises needing BA augmentation during peak cycles
+                    </div>
+                </div>
             </div>
-            <div class="certifications-list">
-                <h3>Certifications & Professional Development</h3>
-                <ul>
-                    <li>PMI Agile Certified Practitioner (PMI-ACP) — Planned 2026</li>
-                    <li>Certified Business Analysis Professional (CBAP) — Planned 2026</li>
-                    <li>Structuring Data for Reporting with SQL — Completed</li>
-                    <li>JIRA Project Management — Completed</li>
-                </ul>
+            
+            <div class="services-cta">
+                <h3>Not Sure Which Service Fits Your Needs?</h3>
+                <p>Let's discuss your project scope, timeline, and budget. I offer a <strong>free 30-minute discovery call</strong> to assess fit and provide tailored recommendations.</p>
+                <a href="mailto:mfarhancp13@gmail.com?subject=BA Services Inquiry" class="btn btn-primary">Schedule Discovery Call</a>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section">
+    <!-- Case Studies Section -->
+    <section id="projects" style="background: white;">
         <div class="container">
-            <h2>Let's Connect</h2>
-            <p>Interested in collaborating on FinTech projects or need BA expertise? Feel free to reach out.</p>
-            <div class="contact-buttons">
-                <a href="mailto:mfarhancp13@gmail.com" class="btn primary large">Get In Touch</a>
-                <a href="https://linkedin.com/in/mfarhancp" class="btn" target="_blank">LinkedIn</a>
+            <h2 class="section-title">Featured Case Studies</h2>
+            <p class="section-subtitle">Real-World Impact Across FinTech & Securities</p>
+            
+            <!-- Case Study 1: BIONS -->
+            <div class="case-study">
+                <h3>🏦 BIONS Multi-Investment Platform Enhancement</h3>
+                <div class="case-meta">BNI Sekuritas | Jan–Dec 2025 | IT Business Analyst</div>
+                
+                <div class="case-section">
+                    <h4>📌 Challenge</h4>
+                    <p>BNI Sekuritas needed to expand BIONS—their flagship platform for stocks, mutual funds, and bonds—to handle increasing retail investor demand while meeting strict OJK and IDX regulatory standards. Existing requirements processes caused 30% delays in feature delivery, and back-office teams struggled with manual reconciliation consuming 4+ hours daily.</p>
+                </div>
+                
+                <div class="case-section">
+                    <h4>🎯 Actions</h4>
+                    <ul>
+                        <li>Conducted 20+ stakeholder workshops across Trading, Risk, and Compliance teams</li>
+                        <li>Documented 150+ user stories in JIRA with acceptance criteria linked to OJK/IDX mandates</li>
+                        <li>Created comprehensive FRD/TSD using gap analysis to map As-Is vs. To-Be workflows</li>
+                        <li>Mapped back-office reconciliation flows using BPMN, identifying 5 redundant manual steps</li>
+                        <li>Built SQL test scripts in PostgreSQL to validate trade routing logic against IDX codes</li>
+                        <li>Managed Scrum sprints with 2-week cadence, maintaining RTM in Confluence for compliance</li>
+                    </ul>
+                </div>
+                
+                <div class="case-section">
+                    <h4>📊 Results</h4>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <span class="metric">30%</span>
+                            <span class="label">Faster Delivery</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="metric">30%</span>
+                            <span class="label">Cut Manual Work</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="metric">100%</span>
+                            <span class="label">IDX Compliance</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="metric">10</span>
+                            <span class="label">Features On-Time</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-section">
+                    <h4>💡 Key Takeaway</h4>
+                    <p>In highly regulated domains like securities trading, <strong>traceability isn't optional</strong>. Every user story must explicitly map to regulatory controls. SQL validation scripts became our "compliance firewall," preventing issues before development.</p>
+                </div>
+            </div>
+            
+            <!-- Case Study 2: KoltiPay -->
+            <div class="case-study">
+                <h3>🌾 KoltiPay x Artajasa: Farmer Lending Transformation</h3>
+                <div class="case-meta">Koltiva (Agritech) | Nov 2022–Dec 2024 | Lead Business Analyst</div>
+                
+                <div class="case-section">
+                    <h4>📌 Challenge</h4>
+                    <p>Koltiva's KoltiPay digital wallet needed integration with Artajasa (Indonesia's national payment gateway) to enable farmers and cooperatives to access instant lending. The existing manual process required 3-5 days for loan disbursement, creating cash flow bottlenecks during critical planting seasons.</p>
+                </div>
+                
+                <div class="case-section">
+                    <h4>🎯 Actions</h4>
+                    <ul>
+                        <li>Led discovery phase to define MVP scope across Product, Finance, and Field Operations</li>
+                        <li>Created detailed BRD outlining API integration requirements and transaction flows</li>
+                        <li>Documented 200+ user stories covering wallet top-up, loan disbursement, and settlements</li>
+                        <li>Designed data flow diagrams showing KoltiPay ↔ Artajasa message exchanges</li>
+                        <li>Orchestrated UAT with 10 pilot cooperatives, achieving 98% success rate</li>
+                        <li>Developed training modules for 50+ field officers with limited tech literacy</li>
+                    </ul>
+                </div>
+                
+                <div class="case-section">
+                    <h4>📊 Results</h4>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <span class="metric">40%</span>
+                            <span class="label">Cost Reduction</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="metric">96%</span>
+                            <span class="label">Faster Disbursement</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="metric">98%</span>
+                            <span class="label">UAT Success</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="metric">35%</span>
+                            <span class="label">Fewer Failures</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-section">
+                    <h4>💡 Key Takeaway</h4>
+                    <p><strong>Field validation beats theoretical design.</strong> Our initial API error handling assumed stable internet—farmers' rural connectivity forced us to add offline queuing. Piloting with cooperatives early saved weeks of rework.</p>
+                </div>
+            </div>
+            
+            <!-- Case Study 3: Bank Mandiri -->
+            <div class="case-study">
+                <h3>🏦 Bank Mandiri: Mobile Banking KYC Compliance</h3>
+                <div class="case-meta">First Discovery (Client: Bank Mandiri) | 2021 | Business Analyst</div>
+                
+                <div class="case-section">
+                    <h4>📌 Challenge</h4>
+                    <p>Bank Mandiri needed to upgrade their mobile banking app to comply with OJK's updated KYC regulations mandating biometric verification and enhanced identity validation. Legacy system lacked clear requirements documentation, causing confusion between Legal, IT, and UX teams.</p>
+                </div>
+                
+                <div class="case-section">
+                    <h4>🎯 Actions</h4>
+                    <ul>
+                        <li>Translated 47-page OJK regulation into 80+ actionable user stories</li>
+                        <li>Created use case diagrams for 5 KYC scenarios including biometric enrollment</li>
+                        <li>Facilitated JAD sessions with Bank's Legal, Risk, and Digital teams</li>
+                        <li>Built traceability matrix linking each story to specific OJK article references</li>
+                    </ul>
+                </div>
+                
+                <div class="case-section">
+                    <h4>📊 Results</h4>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <span class="metric">0</span>
+                            <span class="label">Critical UAT Defects</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="metric">100%</span>
+                            <span class="label">OJK Compliance</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="metric">80+</span>
+                            <span class="label">User Stories Delivered</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Dark Mode Toggle -->
-    <button id="theme-toggle" aria-label="Toggle Dark Mode">
-        <span class="sun">☀️</span>
-        <span class="moon">🌙</span>
-    </button>
+    <!-- Certifications Section -->
+    <section id="certifications" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Certifications & Learning</h2>
+            <p class="section-subtitle">Continuous Professional Development</p>
+            
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">🎯</div>
+                    <div class="cert-info">
+                        <h4>PMI Agile Certified Practitioner</h4>
+                        <p>Planned 2026</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">📊</div>
+                    <div class="cert-info">
+                        <h4>Certified Business Analysis Professional</h4>
+                        <p>Planned 2026</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">💾</div>
+                    <div class="cert-info">
+                        <h4>SQL Data Analysis</h4>
+                        <p>Completed</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">📋</div>
+                    <div class="cert-info">
+                        <h4>Jira Project Management Advanced</h4>
+                        <p>Completed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Scripts -->
-    <script>
-        const toggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>Ready to Drive Your Next Project?</h2>
+            <p>Let's discuss how I can contribute to your team's success in FinTech, Banking, or Securities Trading.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:mfarhancp13@gmail.com" class="btn btn-primary">📧 Get In Touch</a>
+                <a href="https://linkedin.com/in/mfarhancp" target="_blank" class="btn btn-secondary">💼 View LinkedIn</a>
+            </div>
+        </div>
+    </section>
 
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-        }
-
-        toggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
-        });
-
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-        });
-    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Mochammad Farhan | IT Business Analyst | Jakarta, Indonesia</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Built with expertise in FinTech, Securities Trading, and Regulatory Compliance</p>
+        </div>
+    </footer>
 </body>
 </html>
